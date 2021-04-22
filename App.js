@@ -6,14 +6,10 @@ import * as FaceDetector from 'expo-face-detector';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
+
 export default function App() {
   const [detect, setDetect] = useState('Kafanızı sağa çeviriniz');
-  useEffect(() => {
-    (async () => {
-      const { status } = await Camera.requestPermissionsAsync();
-      console.log('izin verildi');
-    })();
-  }, []);
+
   const handleFacesDetected = face => {
     if (detect === 'Kafanızı sağa çeviriniz'
     && face
@@ -32,6 +28,13 @@ export default function App() {
     && face
     && face.smilingProbability > 0.95
     ) { setDetect('tamam'); }
+
+    useEffect(() => {
+      (async () => {
+        const { status } = await Camera.requestPermissionsAsync();
+        console.log('izin verildi');
+      })();
+    }, []);
   };
   return (
     <View style={{ flex: 1, backgroundColor: detect }}>
