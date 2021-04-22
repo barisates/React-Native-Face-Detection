@@ -15,7 +15,6 @@ export default function App() {
     })();
   }, []);
   const handleFacesDetected = face => {
-    face ? console.log(face.smilingProbability) : null;
     if (detect === 'Kafanızı sağa çeviriniz'
     && face
     && (face.yawAngle < 65 && face.yawAngle > 20)
@@ -23,7 +22,7 @@ export default function App() {
       setDetect('Sol gözünüzü kapayınız');
     } else if (detect === 'Sol gözünüzü kapayınız'
     && face
-    && (face.yawAngle < 15 || face.yawAngle > 355)
+    && (face.yawAngle < 20 || face.yawAngle > 350)
     && (face.rollAngle > 330 || face.rollAngle < 20)
     && face.rightEyeOpenProbability < 0.2
     && face.leftEyeOpenProbability > 0.8
