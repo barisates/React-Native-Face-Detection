@@ -28,14 +28,13 @@ export default function App() {
     && face
     && face.smilingProbability > 0.95
     ) { setDetect('tamam'); }
-
-    useEffect(() => {
-      (async () => {
-        const { status } = await Camera.requestPermissionsAsync();
-        console.log('izin verildi');
-      })();
-    }, []);
   };
+  useEffect(() => {
+    (async () => {
+      const { status } = await Camera.requestPermissionsAsync();
+      console.log('izin verildi');
+    })();
+  }, []);
   return (
     <View style={{ flex: 1, backgroundColor: detect }}>
       <Camera
